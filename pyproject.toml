@@ -1,0 +1,10 @@
+[project]
+name = "gemma3-function-calling-benchmarks"
+version = "0.1.0"
+description = "Benchmarking function calling in Gemma 3 models."
+readme = "readme.md"
+requires-python = ">=3.13"
+dependencies = [
+    "requests>=2.32.4",
+    "rich>=14.0.0",
+]
