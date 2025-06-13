@@ -63,16 +63,27 @@ This checks how the model handles an expected error and whether it can follow a 
 
 #### Test 5: Parallel Calling with Disparate Information
 
-This tests the ability to execute unrelated tasks in parallel and combine their results.
+This tests the ability to execute related and unrelated tasks in parallel and combine their results.
 
 *   **Prompt:**
+    > Can you look up the details for all my shipped orders?
+
+*   **Expected Behavior:**
+    1.  The model should identify two related but separate tasks that do not depend on each other.
+    2.  It should identify the shipped orders from the function output.
+    2.  In a single response, it should generate two `function_call` blocks:
+        *   `get_order_details(order_id="123")`
+        *   `get_order_details(order_id="456")`
+    3.  After receiving both function outputs (which may come in separate user messages), it should synthesize them into a single, coherent response.
+
+*   **Follow-up Prompt:**
     > What's the current time, and can you also look up the details for my most recent order?
 
 *   **Expected Behavior:**
     1.  The model should identify two separate tasks that do not depend on each other.
     2.  It should identify the most recent order from the function output.
     2.  In a single response, it should generate two `function_call` blocks:
-        *   `get_current_time()` (from your original function set)
+        *   `get_current_time()`
         *   `get_order_details(order_id="456")`
     3.  After receiving both function outputs (which may come in separate user messages), it should synthesize them into a single, coherent response, such as: "The current time is [...], and order `456` contains a 'Laptop Stand' and a 'Keyboard'."
 
@@ -94,7 +105,7 @@ This tests the model's most fundamental clarification behavior.
     4.  **Bonus:** It passes `sort="relevance"` to the `search_products` function automatically.
     5.  After receiving the output, it should summarize it instead of spitting out all 25 models.
 
-*   **Follow-up Prompt (if the first one succeeds):**
+*   **Follow-up Prompt:**
     > Now search for a mechanical keyboard but only show me ones made by KeyChron.
 
 *   **Expected Behavior:**
