@@ -28,6 +28,12 @@ The evaluations have been performed by the Gemini 2.5 Pro Preview model in AI st
 
 > `2025-06-13-22-55-29-gemma3-1b.json`
 
+#### **Overall Score: 0.5/5**
+
+This model is not functional as a tool-using agent. It does not understand the fundamental instructions for function calling and resorts to hallucinating responses.
+
+#### Score Breakdown
+
 | Parameter                      | Score | Justification                                                                                                                                                                                 |
 | ------------------------------ | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Instruction Adherence**      | 0/5   | The model completely failed to follow the specified format for `thinking` and `function_call`. It produced a hardcoded JSON response instead of invoking a tool.                              |
@@ -39,15 +45,17 @@ The evaluations have been performed by the Gemini 2.5 Pro Preview model in AI st
 | **Planning & Reasoning**       | 0/5   | There was no evidence of planning. The model did not produce a `thinking` block and its actions were not based on a logical sequence of steps to solve the user's problem.                    |
 | **Output Accuracy**            | 0/5   | The output was entirely hallucinated and factually incorrect, as confirmed by the user. It was not user-friendly and did not answer the user's question.                                      |
 
-#### **Overall Score: 0.5/5**
-
-This model is not functional as a tool-using agent. It does not understand the fundamental instructions for function calling and resorts to hallucinating responses.
-
 ---
 
 ### Evaluation of `gemma3-1b-it-qat`
 
 > `2025-06-13-22-56-10-gemma3-1b-it-qat.json`
+
+#### **Overall Score: 0.5/5**
+
+Similar to the base 1b model, this version is non-functional for tool use. While it shows a faint sign of understanding the process by using a `thinking` block, it fails at the critical step of actually calling a function.
+
+#### Score Breakdown
 
 | Parameter                      | Score | Justification                                                                                                                                                                                                                                        |
 | ------------------------------ | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -60,15 +68,17 @@ This model is not functional as a tool-using agent. It does not understand the f
 | **Planning & Reasoning**       | 1/5   | It produced a `thinking` block with a rudimentary plan. However, the plan was nonsensical as it involved actions ("Create a list", "Filter the list") that it cannot perform without tools. The reasoning was deeply flawed.                         |
 | **Output Accuracy**            | 0/5   | The output was a hallucinated JSON object and did not answer the user's question.                                                                                                                                                                    |
 
-#### **Overall Score: 0.5/5**
-
-Similar to the base 1b model, this version is non-functional for tool use. While it shows a faint sign of understanding the process by using a `thinking` block, it fails at the critical step of actually calling a function.
-
 ---
 
 ### Evaluation of `gemma3-4b`
 
 > `2025-06-13-23-19-26-gemma3-4b.json`
+
+#### **Overall Score: 2/5**
+
+This model understands the basic syntax of function calling but is critically hampered by severe state management issues, causing it to fall into unusable loops. It is too unreliable for practical use.
+
+#### Score Breakdown
 
 | Parameter                      | Score | Justification                                                                                                                                                                                                                                                                        |
 | ------------------------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -81,15 +91,17 @@ Similar to the base 1b model, this version is non-functional for tool use. While
 | **Planning & Reasoning**       | 1/5   | The `thinking` blocks revealed the model's broken logic. Its plans were repetitive and it could not maintain a coherent, multi-step strategy, constantly resetting or making illogical choices.                                                                                      |
 | **Output Accuracy**            | 2/5   | When it was not looping and finally managed to produce a response (after user help), the summary was accurate. However, it often failed to provide a final response at all due to the loops.                                                                                         |
 
-#### **Overall Score: 2/5**
-
-This model understands the basic syntax of function calling but is critically hampered by severe state management issues, causing it to fall into unusable loops. It is too unreliable for practical use.
-
 ---
 
 ### Evaluation of `gemma3-4b-it-qat`
 
 > `2025-06-13-23-21-38-gemma3-4b-it-qat.json`
+
+#### **Overall Score: 1/5**
+
+This model fails to grasp its role as a function-calling agent. It cannot handle errors and breaks character, making it unsuitable for tool-use tasks.
+
+#### Score Breakdown
 
 | Parameter                      | Score | Justification                                                                                                                                                                                                                                                                  |
 | ------------------------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -102,15 +114,17 @@ This model understands the basic syntax of function calling but is critically ha
 | **Planning & Reasoning**       | 0/5   | The initial `thinking` block was malformed. The model showed no evidence of planning or logical reasoning, abandoning the agentic approach after a single error.                                                                                                               |
 | **Output Accuracy**            | 0/5   | It never successfully completed a task or provided an accurate, user-friendly response based on tool use.                                                                                                                                                                      |
 
-#### **Overall Score: 1/5**
-
-This model fails to grasp its role as a function-calling agent. It cannot handle errors and breaks character, making it unsuitable for tool-use tasks.
-
 ---
 
 ### Evaluation of `gemma3-12b`
 
 > `2025-06-13-23-34-34-gemma3-12b.json`
+
+#### **Overall Score: 4/5**
+
+A very capable and strong model. Its ability to plan, execute complex chains, and handle errors is excellent. Its primary weakness is a tendency to hallucinate functions that don't exist, which impacts its reliability.
+
+#### Score Breakdown
 
 | Parameter                      | Score | Justification                                                                                                                                                                                                           |
 | ------------------------------ | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -123,15 +137,17 @@ This model fails to grasp its role as a function-calling agent. It cannot handle
 | **Planning & Reasoning**       | 4/5   | The `thinking` blocks were clear and logical. It demonstrated a strong ability to formulate and execute multi-step plans. The only deduction is for the instance where its plan involved hallucinated functions.        |
 | **Output Accuracy**            | 5/5   | When using the correct functions, the final responses were consistently accurate, user-friendly, and synthesized information correctly.                                                                                 |
 
-#### **Overall Score: 4/5**
-
-A very capable and strong model. Its ability to plan, execute complex chains, and handle errors is excellent. Its primary weakness is a tendency to hallucinate functions that don't exist, which impacts its reliability.
-
 ---
 
 ### Evaluation of `gemma3-12b-it-qat`
 
 > `2025-06-14-00-14-26-gemma3-12b-it-qat.json`, `2025-06-14-00-22-54-gemma3-12b-it-qat.json`, `2025-06-14-00-30-18-gemma3-12b-it-qat.json`
+
+#### **Overall Score: 3.8/5**
+
+A capable model that can handle complex tasks, but its inconsistency and occasional, severe hallucinations make it less reliable than the top performers. It has strong foundational skills but lacks the robust state management of the best models.
+
+#### Score Breakdown
 
 | Parameter                      | Score | Justification                                                                                                                                                                                                                                                                                                                 |
 | ------------------------------ | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -144,15 +160,17 @@ A very capable and strong model. Its ability to plan, execute complex chains, an
 | **Planning & Reasoning**       | 3/5   | Highly inconsistent. At times, its `thinking` blocks were clear and logical (e.g., laptop search). At other times, its reasoning completely broke down, as seen with the hallucinated "add to cart" action, which showed a severe lack of situational awareness.                                                              |
 | **Output Accuracy**            | 4/5   | When the reasoning was sound, the final output was accurate and user-friendly. The score is lowered due to the instances where it produced confusing and incorrect responses based on its hallucinations.                                                                                                                     |
 
-#### **Overall Score: 3.8/5**
-
-A capable model that can handle complex tasks, but its inconsistency and occasional, severe hallucinations make it less reliable than the top performers. It has strong foundational skills but lacks the robust state management of the best models.
-
 ---
 
 ### Evaluation of `gemma3-27b`
 
 > `2025-06-14-00-40-59-gemma3-27b.json`, `2025-06-14-00-49-20-gemma3-27b.json`, `2025-06-14-00-57-14-gemma3-27b.json`
+
+#### **Overall Score: 4.9/5**
+
+An outstanding and highly advanced function-calling model. Its ability to plan, reason, execute parallel and composite calls, and handle errors is top-tier. The single, minor context lapse is the only thing preventing a perfect score.
+
+#### Score Breakdown
 
 | Parameter                      | Score | Justification                                                                                                                                                                                                                                         |
 | ------------------------------ | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -165,15 +183,18 @@ A capable model that can handle complex tasks, but its inconsistency and occasio
 | **Planning & Reasoning**       | 5/5   | The `thinking` blocks were exemplary. They were clear, concise, and accurately described a logical, multi-step plan involving both sequential and parallel execution. The reasoning was sound throughout all conversations.                           |
 | **Output Accuracy**            | 5/5   | All final responses were accurate, user-friendly, and correctly synthesized information from multiple, sometimes parallel, function calls.                                                                                                            |
 
-#### **Overall Score: 4.9/5**
-
-An outstanding and highly advanced function-calling model. Its ability to plan, reason, execute parallel and composite calls, and handle errors is top-tier. The single, minor context lapse is the only thing preventing a perfect score.
-
 ---
 
 ### Evaluation of `gemma3-27b-it-qat`
 
 > `2025-06-14-02-02-53-gemma3-27b-it-qat.json`, `2025-06-14-02-27-07-gemma3-27b-it-qat.json`, `2025-06-14-02-48-30-gemma3-27b-it-qat.json`, `2025-06-14-02-55-08-gemma3-27b-it-qat.json`
+
+
+#### **Overall Score: 4.4/5**
+
+An extremely capable model with excellent positive instruction following, planning, and error handling. Its two significant weaknesses are a failure to adhere to negative constraints and occasional context memory lapses, which prevent it from reaching the top tier.
+
+#### Score Breakdown
 
 | Parameter                      | Score | Justification                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -185,7 +206,3 @@ An outstanding and highly advanced function-calling model. Its ability to plan, 
 | **Composite Function Calling** | 5/5   | Perfect. It flawlessly executed all sequential and composite calling tests, including the complex chains in Test 2 and Test 4.                                                                                                                                                                                                 |
 | **Planning & Reasoning**       | 4/5   | The reasoning is very strong for positive tasks and error handling. The `thinking` blocks are clear and logical. However, its failure to adhere to a negative constraint and its temporary memory lapse indicate a weakness in its reasoning and planning capabilities.                                                        |
 | **Output Accuracy**            | 5/5   | All user-facing responses were accurate, well-synthesized, and user-friendly.                                                                                                                                                                                                                                                  |
-
-#### **Overall Score: 4.4/5**
-
-An extremely capable model with excellent positive instruction following, planning, and error handling. Its two significant weaknesses are a failure to adhere to negative constraints and occasional context memory lapses, which prevent it from reaching the top tier.
